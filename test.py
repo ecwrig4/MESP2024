@@ -6,10 +6,10 @@ import datetime
 from mesp import Mesp
 from mesp.bounding.frankwolfe import frankwolfe
 
-C = pd.read_table(os.getcwd() + "/examples/data/Data2000.dms",
-                  header=None, encoding="utf-8", sep=",")
+C = pd.read_table(os.getcwd() + "/examples/data/Data63.dms",
+                  header=None, encoding="utf-8", sep="\s+") # IMPORTANT: Some of the datasets require sep = ","
 
-n = 2000
+n = 63
 C = np.array(C)
 C = C.reshape(n,n)
 
