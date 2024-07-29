@@ -62,27 +62,6 @@ def frankwolfelocal(V, Vsquare, E, n, d, s):
 
     return  S1, S0, fixone, fixzero, cut_gap, x, LB
 
-# ========== DEPRECATE ==========
-
-def cut_gap_fixing(V, Vsquare, E, n, d, s):
-    cut_gap, v, w, x, LB = frankwolfe(V, Vsquare, E, n, d, s, varfix=True)
-
-    xsol = [2]*n
-    S1 = []
-    S0 = []
-
-    # Derive optimality cuts
-    for i in range(n):
-        if cut_gap < w[i]: # restricted DDF < DDF if i-th point is selected; Hence, discard i-th point
-            xsol[i] = 0 
-        if cut_gap < v[i]: # restricted DDF < DDF if i-th point is discarded; Hence, select i-th point 
-            xsol[i] = 1 
-    S0 = [i for i in range(n) if xsol[i] == 0] # discarded points
-    S1 = [i for i in range(n) if xsol[i] == 1] # selected points
-
-    return S1, S0, v, w, cut_gap, x, LB
-
-# ==========       ============
 
 ### output S1, S0, time
 ### S1: indices of variables fixed to be 1 
