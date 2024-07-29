@@ -79,6 +79,7 @@ def varfix(V, Vsquare, E, n, d, s):
     setzero = list(set(range(n))-set(S0))
     cutgap = -1
     for i in range(n):
+        #checking if selecting the i-th point (which is not in S0) improves the soln
         if temp[sortinx[i]] < init_cut_gap and sortinx[i] in setzero:
             indexS= []
             indexS = S1
@@ -102,7 +103,7 @@ def varfix(V, Vsquare, E, n, d, s):
         sone = [i for i in range(n) if cxsol[i] >= 0.5]
     sone = list(set(sone)-set(S1))
     cutgap = -1
-    for i in sone:
+    for i in sone: #checks if discarding the i-th point improves solution
         indexT = []
         indexT = S0
         indexT.append(i) # suppose discard i-th point 
