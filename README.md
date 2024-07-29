@@ -7,22 +7,13 @@ This repository provides a declarative language for formulating, approximating, 
 - [Using this repository](#using-mesppy)
 - [More on Maximum Entropy Sampling](#maximum-entropy-sampling-more-broadly)
 
-## IMPORTANT NOTE
-As of ~ 1:00 12/31 this repository has been restored to a functional (at least semi-functional <- I haven't done rigorous testing yet) state. Please see the "test_12-30.py" file for an updated example 
-on how to interact with the Mesp class. Furthermore, here are a few notes 
-* Since the refactor I've only tested s=3, s=5, and s=10. I'd suggest testing instances under s <= 30 since I need to use the complementary formulation of the problem in order for the larger instances to possess the proper symmetry (in runtime).
-* My effort to keep track of a global ub seem to have been in vain. I need to do some further experimentation, but it appears that enumerating in a DFS fashion 
-makes this feature irrelevant (compare Kurt paper to book)
-* This new implementation is slightly slower (for s=10 at least) than what I've previously been able to achieve. Could have something to do with now keeping track of the actual solution (not just optimal value). 
-* I need to utilize more of the statistics I'm now generating to better understand
-the optimality behavior.
-
-The next 6 days or so probably will not see many updates to the repository, although, I do need to organize my notes/ideas for next steps (see below).
-
-Also note that if you wish to experiment with this repo, it's best to run "python test_12-30.py" in a terminal window of medium to large size so that the runtime output displays properly.
+## IMPORTANT NOTE 6/28
+This is my updated version of Quill's MESP repo.  Many of the attributes remain the same.
+In terms of testing, I have gone through several matrices of data from Li's collection of data... some of which still cannot be handled by this code.
+I am having problems with the variable fixing in general.  I added a False return if there are too many variables fixed or the matrix becomes empty.  However, I think this is just a band-aid to a root issue.  
 
 
-## The Maximum Entropy Sampling Problem
+## The Maximum Entropy Sampling Problem (explanation from Quill)
 We'll take four passes at explaining this problem.
 
 **Intuitively,** the MESP aims to select some (prespecified) subset of random observations from a set of candidate observations to maximize the information obtained. *Usually,* in practice, we are looking to select a small subset from a large candidate set.
