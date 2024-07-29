@@ -12,8 +12,8 @@ This is my updated version of Quill's MESP repo.  Many of the attributes remain 
 In terms of testing, I have gone through several matrices of data from Li's collection of data... some of which still cannot be handled by this code.
 I am having problems with the variable fixing in general.  I added a False return if there are too many variables fixed or the matrix becomes empty.  However, I think this is just a band-aid to a root issue.  
 
-
-## The Maximum Entropy Sampling Problem (explanation from Quill)
+Quill's Work Below
+## The Maximum Entropy Sampling Problem 
 We'll take four passes at explaining this problem.
 
 **Intuitively,** the MESP aims to select some (prespecified) subset of random observations from a set of candidate observations to maximize the information obtained. *Usually,* in practice, we are looking to select a small subset from a large candidate set.
