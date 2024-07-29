@@ -41,32 +41,7 @@ class BoundChooser:
         except:
             raise ValueError("The provided bounding algorithm could not accept the required arguments")
 
-    def set_bound(self, s_int: Tuple[int, int], n_int: Tuple[int, int],
-                  bound_algo: Callable[
-                      ...,
-                       Union[Tuple[float, List[float], float],
-                            Tuple[float, List[float], float, List[float], List[float]]
-                       ]]) -> None:
-        
-        # CHECK IF S AND N VALUES ARE VALID
-
-        # First check if passed in bounding function meets requirements
-        self.rule_checker(bound_algo)
-
-        new_bound_s = arange(s_int[0], s_int[1] + 1)
-        new_bound_n = arange(n_int[0], n_int[1] + 1)
-        
-        if self.algorithm_dict == None:
-            n_range = arange(1, self.C.n + 1)
-            s_range = arange(1, self.C.n - 1)
-            
-            self.algorithm_dict = {n : 
-                                   {s : bound_algo if s in new_bound_s and n in new_bound_n else self.default_algo for s in s_range}
-                                   for n in n_range}
-        else:
-            for n in new_bound_n:
-                for s in new_bound_s:
-                    self.algorithm_dict[n][s] = bound_algo
+    
 
     def get_bound(self, s: int) -> Callable[
                       ...,
